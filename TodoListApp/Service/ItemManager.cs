@@ -33,7 +33,6 @@ namespace TodoListApp.Service
             _storage = new SQLiteStorage();
             _tokenFilePath = Path.Combine(Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName, "token");
             GetToken();
-            _itemFetcher = new ItemFetcher(_token);
         }
 
         #endregion
@@ -144,6 +143,7 @@ namespace TodoListApp.Service
                     using (StreamReader reader = new StreamReader(stream))
                     {
                         _token = reader.ReadLine();
+                        _itemFetcher = new ItemFetcher(_token);
                     }
                 }
             }
