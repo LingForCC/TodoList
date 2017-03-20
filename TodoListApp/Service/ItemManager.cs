@@ -33,6 +33,7 @@ namespace TodoListApp.Service
             _storage = new SQLiteStorage();
             _tokenFilePath = Path.Combine(Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName, "token");
             GetToken();
+            _itemFetcher = new ItemFetcher(_token);
         }
 
         #endregion
